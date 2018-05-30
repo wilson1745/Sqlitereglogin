@@ -28,15 +28,10 @@ public class Login extends AppCompatActivity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_login);
 
-      final ListView list = findViewById(R.id.list);
-
       openHelper = DatabaseHelper.getInstance(this);
       db = openHelper.getReadableDatabase();
 
-      _txtusername = findViewById(R.id.txtusername);
-      _txtpass = findViewById(R.id.txtpass);
-      _btnlog = findViewById(R.id.btnlog);
-      _btnreg = findViewById(R.id.btnreg);
+      findView();
 
       _btnlog.setOnClickListener(new View.OnClickListener() {
          @Override
@@ -85,5 +80,12 @@ public class Login extends AppCompatActivity {
             startActivity(intent);
          }
       });
+   }
+
+   private void findView() {
+      _txtusername = findViewById(R.id.txtusername);
+      _txtpass = findViewById(R.id.txtpass);
+      _btnlog = findViewById(R.id.btnlog);
+      _btnreg = findViewById(R.id.btnreg);
    }
 }

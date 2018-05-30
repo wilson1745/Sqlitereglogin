@@ -33,15 +33,7 @@ public class MainActivity extends AppCompatActivity {
          @Override
          public void onClick(View v) {
             //db = openHelper.getWritableDatabase();
-            String name = _txtname.getText().toString();
-            String username = _txtusername.getText().toString();
-            String pass = _txtpass.getText().toString();
-            String email = _txtemail.getText().toString();
-            String phone = _txtphone.getText().toString();
-
-            insertdata(name, username, pass, email, phone);
-
-            Toast.makeText(getApplicationContext(), "register successfully", Toast.LENGTH_LONG).show();
+            register();
          }
       });
 
@@ -52,6 +44,26 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
          }
       });
+   }
+
+   private void register() {
+      String name = _txtname.getText().toString();
+      String username = _txtusername.getText().toString();
+      String pass = _txtpass.getText().toString();
+      String email = _txtemail.getText().toString();
+      String phone = _txtphone.getText().toString();
+
+      if(name.equals("") || username.equals("") || pass.equals("") || email.equals("") || phone.equals("")) {
+         Toast.makeText(getApplicationContext(), "bad input", Toast.LENGTH_LONG).show();
+      }
+      else {
+         insertdata(name, username, pass, email, phone);
+
+         Intent intent = new Intent(MainActivity.this, Login.class);
+         startActivity(intent);
+
+         Toast.makeText(getApplicationContext(), "register successfully", Toast.LENGTH_LONG).show();
+      }
    }
 
    private void findView() {
